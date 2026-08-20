@@ -42,10 +42,10 @@ function ResearchPage() {
           { name: "depth", label: "Depth", type: "select", options: ["Quick overview", "Standard brief", "Deep dive"] },
           { name: "format", label: "Output format", type: "select", options: ["Briefing notes", "Pros & cons", "Comparison", "Q&A", "Executive summary"] },
         ]}
-        buildPrompt={(v) => `Produce a ${v.depth?.toLowerCase()} research brief in "${v.format}" format.
+        buildPrompt={(v) => `Produce a ${v("depth").toLowerCase()} research brief in "${v("format")}" format.
 
-Topic: ${v.topic}
-Intended use: ${v.purpose || "General understanding"}
+Topic: ${v("topic")}
+Intended use: ${v("purpose") || "General understanding"}
 
 Return:
 1. Executive summary

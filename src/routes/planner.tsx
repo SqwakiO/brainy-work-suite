@@ -41,10 +41,10 @@ function PlannerPage() {
         ]}
         buildPrompt={(v) => `Create an execution plan.
 
-Goal: ${v.goal}
-Time horizon: ${v.horizon}
-Prioritization method: ${v.method}
-Context & constraints: ${v.context || "Not stated"}
+Goal: ${v("goal")}
+Time horizon: ${v("horizon")}
+Prioritization method: ${v("method")}
+Context & constraints: ${v("context") || "Not stated"}
 
 Return:
 1. Objective restated in one sentence

@@ -38,7 +38,7 @@ export function ToolWorkspace({
 }: {
   fields: Field[];
   system: string;
-  buildPrompt: (values: Record<string, string>) => string;
+  buildPrompt: (get: (name: string) => string) => string;
   cta?: string;
   outputLabel?: string;
   tips?: string[];
@@ -64,7 +64,7 @@ export function ToolWorkspace({
       toast.error(`Please fill in: ${missing.map((f) => f.label).join(", ")}`);
       return;
     }
-    mutation.mutate(buildPrompt(values));
+    mutation.mutate(buildPrompt((n) => values[n] ?? ""));
   };
 
   return (
@@ -88,7 +88,7 @@ export function ToolWorkspace({
                   onChange={(e) => set(field.name, e.target.value)}
                 />
               ) : field.type === "select" ? (
-                <Select value={values[field.name]} onValueChange={(v) => set(field.name, v)}>
+                <Select value={values[field.name] ?? ""} onValueChange={(v) => set(field.name, v)}>
                   <SelectTrigger id={field.name}>
                     <SelectValue placeholder="Select" />
                   </SelectTrigger>

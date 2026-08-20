@@ -52,12 +52,12 @@ function EmailPage() {
         ]}
         buildPrompt={(v) => `Write a workplace email.
 
-Recipient: ${v.recipient}
-Purpose: ${v.purpose}
-Tone: ${v.tone}
-Length: ${v.length}
+Recipient: ${v("recipient")}
+Purpose: ${v("purpose")}
+Tone: ${v("tone")}
+Length: ${v("length")}
 Key points (use only these facts):
-${v.points}
+${v("points")}
 
 Return: a subject line, then the email body with a greeting, structured paragraphs, a clear call to action and a sign-off placeholder [Your name].`}
       />

@@ -45,12 +45,12 @@ function NotesPage() {
           },
           { name: "audience", label: "Summary audience", type: "select", options: ["Team", "Executive", "Client", "Personal recap"] },
         ]}
-        buildPrompt={(v) => `Summarize the following meeting for a ${v.audience?.toLowerCase()} audience.
+        buildPrompt={(v) => `Summarize the following meeting for a ${v("audience").toLowerCase()} audience.
 
-Meeting: ${v.title || "Untitled meeting"}
+Meeting: ${v("title") || "Untitled meeting"}
 
 Notes:
-${v.notes}
+${v("notes")}
 
 Return these sections:
 1. TL;DR (3 bullets max)
